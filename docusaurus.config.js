@@ -10,8 +10,8 @@ const katex = require('rehype-katex');
 const config = {
   title: 'Jack Leitch',
   tagline: 'Machine Learning Engineer',
-  url: 'https://jackmleitch.github.io',
-  baseUrl: '/PersonalWebsite/',
+  url: 'jackmleitch.com',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
