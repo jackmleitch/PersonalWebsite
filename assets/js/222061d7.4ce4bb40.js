@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjackmleitch_com_np=self.webpackChunkjackmleitch_com_np||[]).push([[4734],{8337:function(e){e.exports=JSON.parse('{"label":"Python","permalink":"/PersonalWebsite/blog/tags/python","allTagsPath":"/PersonalWebsite/blog/tags","count":10}')}}]);

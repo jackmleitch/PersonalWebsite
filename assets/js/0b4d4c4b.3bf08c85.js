@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjackmleitch_com_np=self.webpackChunkjackmleitch_com_np||[]).push([[7961],{1918:function(e){e.exports=JSON.parse('{"label":"Scikit-Learn","permalink":"/PersonalWebsite/blog/tags/scikit-learn","allTagsPath":"/PersonalWebsite/blog/tags","count":2}')}}]);

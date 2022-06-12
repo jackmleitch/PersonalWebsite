@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjackmleitch_com_np=self.webpackChunkjackmleitch_com_np||[]).push([[9124],{4231:function(e){e.exports=JSON.parse('{"label":"Github","permalink":"/PersonalWebsite/blog/tags/github","allTagsPath":"/PersonalWebsite/blog/tags","count":1}')}}]);

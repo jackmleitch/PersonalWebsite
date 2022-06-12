@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjackmleitch_com_np=self.webpackChunkjackmleitch_com_np||[]).push([[7876],{1230:function(e){e.exports=JSON.parse('{"label":"Optimization","permalink":"/PersonalWebsite/blog/tags/optimization","allTagsPath":"/PersonalWebsite/blog/tags","count":1}')}}]);
