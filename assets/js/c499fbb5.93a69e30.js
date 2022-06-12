@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkjackmleitch_com_np=self.webpackChunkjackmleitch_com_np||[]).push([[6693],{7976:function(e){e.exports=JSON.parse('{"label":"Mathematics","permalink":"/PersonalWebsite/blog/tags/mathematics","allTagsPath":"/PersonalWebsite/blog/tags","count":1}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjackmleitch_com_np=self.webpackChunkjackmleitch_com_np||[]).push([[8046],{5162:function(e){e.exports=JSON.parse('{"label":"Recommendation System","permalink":"/blog/tags/recommendation-system","allTagsPath":"/blog/tags","count":2}')}}]);

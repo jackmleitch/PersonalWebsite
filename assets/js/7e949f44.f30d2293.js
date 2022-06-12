@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkjackmleitch_com_np=self.webpackChunkjackmleitch_com_np||[]).push([[4014],{7768:function(a){a.exports=JSON.parse('{"label":"Classification","permalink":"/PersonalWebsite/blog/tags/classification","allTagsPath":"/PersonalWebsite/blog/tags","count":1}')}}]);

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkjackmleitch_com_np=self.webpackChunkjackmleitch_com_np||[]).push([[6243],{2680:function(e){e.exports=JSON.parse('{"label":"XGBoost","permalink":"/PersonalWebsite/blog/tags/xg-boost","allTagsPath":"/PersonalWebsite/blog/tags","count":1}')}}]);

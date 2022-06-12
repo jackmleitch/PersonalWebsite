@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjackmleitch_com_np=self.webpackChunkjackmleitch_com_np||[]).push([[9287],{794:function(a){a.exports=JSON.parse('{"label":"API","permalink":"/blog/tags/api","allTagsPath":"/blog/tags","count":1}')}}]);

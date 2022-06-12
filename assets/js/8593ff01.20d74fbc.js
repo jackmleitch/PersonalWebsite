@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjackmleitch_com_np=self.webpackChunkjackmleitch_com_np||[]).push([[7007],{9064:function(c){c.exports=JSON.parse('{"label":"Docker","permalink":"/blog/tags/docker","allTagsPath":"/blog/tags","count":1}')}}]);

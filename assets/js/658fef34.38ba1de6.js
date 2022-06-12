@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkjackmleitch_com_np=self.webpackChunkjackmleitch_com_np||[]).push([[5895],{3476:function(e){e.exports=JSON.parse('{"label":"Chrome Extension","permalink":"/PersonalWebsite/blog/tags/chrome-extension","allTagsPath":"/PersonalWebsite/blog/tags","count":1}')}}]);
