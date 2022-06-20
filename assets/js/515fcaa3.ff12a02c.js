@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjackmleitch_com_np=self.webpackChunkjackmleitch_com_np||[]).push([[246],{7088:function(e){e.exports=JSON.parse('{"permalink":"/blog/tags/python/page/2","page":2,"postsPerPage":10,"totalPages":2,"totalCount":11,"previousPage":"/blog/tags/python","blogDescription":"Blog","blogTitle":"Blog"}')}}]);
