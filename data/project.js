@@ -34,6 +34,10 @@ export default [
   {
     name: "Data Engineering",
     items: [
+      {title: "Strava ELT Data Pipline",
+       description: "EtLT of my own Strava data using the Strava API, MySQL, Python, S3, Redshift, and Airflow.",
+       url: "https://github.com/jackmleitch/StravaDataPipline",
+       img: "./images/system_diagram.png"},
       {
         title: "SQL Based Ping Pong Ranking System",
         description: "Ping pong ranking system, based on chess ELO rankings, that my friends and I use to decide who is actually better at ping pong!",
