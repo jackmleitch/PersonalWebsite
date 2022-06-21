@@ -1,6 +1,6 @@
 ---
 slug: Strava-Data-Pipeline
-title: Building a Strava Data EtLT Pipline
+title: Building a ELT Strava Data Pipline
 tags: [Python, AWS, Airflow, Data-Engineering]
 authors: jack
 ---
@@ -15,7 +15,7 @@ authors: jack
 
 ## [Data Extraction](https://github.com/jackmleitch/StravaDataPipline/blob/master/src/extract_strava_data.py)
 
-My personal Strava activity data is first **ingested incrementally** using the [Strava API](https://developers.strava.com) and
+My Strava activity data is first **ingested incrementally** using the [Strava API](https://developers.strava.com) and
 loaded into an **S3 bucket**. On each ingestion run, we query a MySQL database to get the date of the last extraction:
 
 ```python
@@ -149,7 +149,7 @@ def redshift_staging_to_production(table_name: str, rs_conn) -> None:
 
 We implement a simple framework in python that is used to execute SQL-based data validation checks in our data pipeline. Although it lacks many features we would expect to see in a production environment, it is a good start and provides some insight into how we can improve our infrastructure.
 
-The `validatior.py` script executes a pair of SQL scripts on Redshift and compares the two based on a comparison operator (>, <, =). The test then passes or fails based on the outcome of the two executed scripts. We execute this validation step after we upload our newly ingested data to the staging table but before we insert this table to the production table.
+The `validatior.py` script executes a pair of SQL scripts on Redshift and compares the two based on a comparison operator (>, <, =). The test then passes or fails based on the outcome of the two executed scripts. We execute this validation step after we upload our newly ingested data to the staging table but before we insert this table into the production table.
 
 ```python
 def execute_test(db_conn, script_1: str, script_2: str, comp_operator: str) -> bool:
@@ -183,7 +183,7 @@ def execute_test(db_conn, script_1: str, script_2: str, comp_operator: str) -> b
     return False
 ```
 
-As a starting point, I implemented checks that check for duplicates, compare the distribution of the total activities in the staging table (Airflow is set to execute at the end of each week) to the average historical weekly activity count, and compares the distribution of the Kudos Count metric to the historical distribution using the z-score. In other words, the last two queries check if the values are within a 90% confidence interval in either direction of what's expected based on history. For example, the following query computes the z-score for the total activities uploaded in a given week (found in the staging table).
+As a starting point, I implemented checks that check for duplicates, compare the distribution of the total activities in the staging table (Airflow is set to execute at the end of each week) to the average historical weekly activity count, and compare the distribution of the Kudos Count metric to the historical distribution using the z-score. In other words, the last two queries check if the values are within a 90% confidence interval in either direction of what's expected based on history. For example, the following query computes the z-score for the total activities uploaded in a given week (found in the staging table).
 
 ```sql
 with activities_by_week AS (
@@ -253,7 +253,7 @@ def send_slack_notification(webhook_url: str, script_1: str, script_2: str,
         return False
 ```
 
-We then combine all the tests to a shell script `validate_load_data.sh` that we run after loading the data from the S3 bucket to a staging table but before we insert this data into the production table. Running this pipeline on last weeks data gives us the following output:
+We then combine all the tests to a shell script `validate_load_data.sh` that we run after loading the data from the S3 bucket to a staging table but before we insert this data into the production table. Running this pipeline on last week's data gives us the following output:
 ![slack](./images/StravaDataPipeline/slack_output.png)
 It's great to see that our second test failed because I didn't run anywhere near as much last week as I usually do!
 
@@ -261,7 +261,7 @@ Although this validation framework is very basic, it is a good foundation that c
 
 ## [Data Transformations](https://github.com/jackmleitch/StravaDataPipline/blob/master/src/build_data_model.py)
 
-Now the data has been ingested into the data warehouse, the next step in the pipeline is data transformations. Data transformations in this case include both noncontextual manipulation of the data and modeling of the data with context and logic in mind. The benefit of using the ELT methodology instead of the ETL framework, in this case, is that it gives us, the end-user, the freedom tp transform the data the way we need as opposed to having a fixed data model that we cannot change (or at least not change without hassle). In my case, I am connecting my Redshift data warehouse to Tableau building out a dashboard. We can, for example, build a data model to extract monthly statistics:
+Now the data has been ingested into the data warehouse, the next step in the pipeline is data transformations. Data transformations in this case include both non-contextual manipulation of the data and modeling of the data with context and logic in mind. The benefit of using the ELT methodology instead of the ETL framework, in this case, is that it gives us, the end-user, the freedom to transform the data the way we need as opposed to having a fixed data model that we cannot change (or at least not change without hassle). In my case, I am connecting my Redshift data warehouse to Tableau building out a dashboard. We can, for example, build a data model to extract monthly statistics:
 
 ```sql
 CREATE TABLE IF NOT EXISTS activity_summary_monthly (
@@ -314,17 +314,17 @@ A further direction to take this would be to utilize a 3rd party tool such as [d
 
 We create a DAG to orchestrate our data pipeline. We set the pipeline to run weekly which means it will run once a week at midnight on Sunday morning. As seen in the diagram below, our DAG will:
 
-- First extract any recent data using the Strava API and upload it to an S3 bucket
+- First, extract any recent data using the Strava API and upload it to an S3 bucket
 - It will then load this data into a staging table in our Redshift cluster
 - The 3 validation tests will then be executed, messaging our Slack channel the results
 - The staging table will then be inserted into the production table, removing any duplicates in the process
-- Finally a monthly aggregation data model will be created in a new table `activity_summary_monthly`
+- Finally, a monthly aggregation data model will be created in a new table `activity_summary_monthly`
 
 ![dag](./images/StravaDataPipeline/DAG.png)
 
 ## Data Visualization
 
-With the data transformations done we were then able to build out an interactive dashboard using Tableau that updates automatically when new data gets intgested to the data warehouse, which is weekly. The dashboard I created was built to investigate how Kudos on my own Strava activities changes over time and location. After building this project I shut down the Redshift server as to not incur any costs but a screenshot of the dashboard can be seen below.
+With the data transformations done we were then able to build out an interactive dashboard using Tableau that updates automatically when new data gets ingested to the data warehouse, which is weekly. The dashboard I created was built to investigate how Kudos on my Strava activities changes over time and location. After building this project I shut down the Redshift server to not incur any costs but a screenshot of the dashboard can be seen below.
 ![dashboard](./images/StravaDataPipeline/dashboard.png)
 ![dashboard](./images/StravaDataPipeline/dashboard_map.png)
 
