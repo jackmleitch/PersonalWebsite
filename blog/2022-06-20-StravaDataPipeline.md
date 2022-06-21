@@ -273,7 +273,7 @@ CREATE TABLE IF NOT EXISTS activity_summary_monthly (
 TRUNCATE activity_summary_monthly;
 
 INSERT INTO activity_summary_monthly
-SELECT EXTRACT(MONTH FROM start_date) AS activity_month,
+SELECT EDATE_TRUNC('month', start_date::date) AS activity_month,
     ROUND(SUM(distance)/1609) AS total_miles_ran,
     ...
     ROUND(STDDEV(kudos_count), 1) AS std_kudos
@@ -287,7 +287,7 @@ We can also build more complicated data models. For example, we can get the week
 
 ```sql
 WITH weekly_kudos_count AS (
-  SELECT DATE_PART('week', start_date) AS week_of_year,
+  SELECT DATE_TRUNC('week', start_date::date) AS week_of_year,
     workout_type,
     SUM(kudos_count) AS total_kudos
   FROM public.strava_activity_data
@@ -341,3 +341,13 @@ def test_make_strava_api_request():
     assert isinstance(response_json, dict), "API should respond with a dictionary."
     assert isinstance(response_json["id"], int), "Activity ID should be an integer."
 ```
+
+## Further Directions and Considerations
+
+- **Improve Airflow with Docker**: I could have used the docker image of Airflow to run the pipeline in a Docker container which would've made things more robust. This would also make deploying the pipeline at scale much easier!
+
+- **Implement more validation tests**: For a real production pipeline, I would implement more validation tests all through the pipeline. I could, for example, have used an open-source tool like [Great Expectations](https://greatexpectations.io/).
+
+- **Simplify the process**: The pipeline could probably be run in a much simpler way. An alternative could be to use Cron for orchestration and PostgreSQL or SQLite for storage.
+
+- **Data streaming**: To keep the Dashboard consistently up to date we could benefit from something like [Kafka](https://kafka.apache.org/).
