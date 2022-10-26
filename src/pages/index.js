@@ -12,8 +12,8 @@ const features = [
     imageUrl: "img/favicon.ico",
     description: (
       <p>
-        Hi, it's me, <b> Jack Leitch</b>. I am a Machine Learning Engineer 
-        with experience in statistical learning, computer vision, and NLP.
+        Hi, it's me, <b> Jack Leitch</b>. I am a Machine Learning Engineer with experience deploying models, both big and small, at scale.
+        I have particular interests in statistical learning, computer vision, and NLP.
         <br />
         <br />
         I am ambitious to continuously develop in ML and Data Science, and apply
