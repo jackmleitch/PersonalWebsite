@@ -4,14 +4,15 @@ import styled from "styled-components";
 
 const skills = [
   "python",
+  "rust",
+  "R",
   "docker",
+  "kubernetes",
   "azure",
   "aws",
   "postgresql",
   "github",
-  "R",
   "linux",
-  
 ];
 const Container = styled.div`
   display: flex;

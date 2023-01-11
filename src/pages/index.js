@@ -12,11 +12,11 @@ const features = [
     imageUrl: "img/favicon.ico",
     description: (
       <p>
-        Hi, it's me, <b> Jack Leitch</b>. I am a Machine Learning Engineer with experience deploying models, both big and small, at scale.
-        I have particular interests in statistical learning, computer vision, and NLP.
+        Hi, it's me, <b> Jack Leitch</b>. I am a Machine Learning Engineer and Software Engineer with experience deploying and maintaining scalable, flexible systems for core ML services used 1000s of times a day.
+        I have particular interests NLP, statistical learning, and building products.
         <br />
         <br />
-        I am ambitious to continuously develop in ML and Data Science, and apply
+        I am ambitious to continuously develop in ML and software development, and apply
         this knowledge to a vast range of fields.
       </p>
     ),
@@ -26,10 +26,9 @@ const features = [
     imageUrl: "img/undraw_docusaurus_tree.svg",
     description: (
       <p>
-        I have worked at a tech startup where I built an end-to-end license 
-        plate recognition system using Tensorflow. I also build data science 
-        projects in my spare time on topics that interest me, for example, my Strava 
-        Kudos Predictor combines my love for data and running. You can find my projects on 
+        I currently work at an AI healthcare startup where I designed and implemented architecture, supporting thousands of API calls daily, to automate prior authorizations reducing decision time by an average of 10 days.
+        I have also worked at a tech startup where I built an end-to-end license 
+        plate recognition system using Tensorflow. You can find some of my projects on 
         my <a href="https://github.com/jackmleitch">Github page</a>.
       </p>
     ),
@@ -42,7 +41,7 @@ const features = [
 ];
 
 const HeroHeader = styled("header")`
-  background: url("img/edinburgh_skyline.png") no-repeat center;
+  background: url("img/boston-skyline.jpg") no-repeat center;
   background-size: cover;
 `;
 function Feature({ imageUrl, title, description }) {

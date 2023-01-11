@@ -18,16 +18,14 @@ export default [
         Designed and implemented architecture, supporting thousands of API calls daily, to automate prior authorizations reducing decision time by an average of 10 days
         </li>
         <li>
-        Optimized ML training pipeline by decreasing time to process millions of medical documents from 20 hours to
-30 minutes by implementing efficient ETL pipelines in Databricks using PySpark
+        Optimized ML training pipeline by decreasing time to process millions of medical documents from 20 hours to 30 minutes by implementing efficient ETL pipelines in Databricks using PySpark
         </li>
         <li>
-        Built a highly scalable medical concept feature generation pipeline using FastAPI and Azure Kubernetes Service
-to be used by other core engineering teams
+        Built a highly scalable NLP feature generation pipeline using FastAPI and Azure Kubernetes Service to be used by other core engineering teams
+
         </li>
         <li>
-        Built and maintain internal-use Python packages for data processing, code generation, and feature computation
-to add major functionality to AI products
+        Developed and maintain internal-use Python packages for data processing, code generation, and feature computation to add major functionality to AI products
         </li>
       </ul>
     ),
